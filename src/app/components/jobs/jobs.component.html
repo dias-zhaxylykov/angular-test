@@ -1,0 +1,5 @@
+<div>
+  <div *ngFor="let item of jobs">
+    <a [routerLink]="['../jobs/' + item.id]">{{item.job_number}} {{item.job_title}}</a>
+  </div>
+</div>

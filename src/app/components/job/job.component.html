@@ -1,0 +1,37 @@
+<form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="job_number">Number: </label>
+    <input id="job_number" type="text" formControlName="job_number">
+  </div>
+  <div>
+    <label for="job_title">Title: </label>
+    <input id="job_title" type="text" formControlName="job_title">
+  </div>
+  <div>
+    <label for="job_start_date">Start Date: </label>
+    <input id="job_start_date" type="text" formControlName="job_start_date">
+  </div>
+  <div>
+    <label for="job_close_date">Close Date: </label>
+    <input id="job_close_date" type="text" formControlName="job_close_date">
+  </div>
+  <div>
+    <label for="experience_required">Experience Required: </label>
+    <select id="experience_required" formControlName="experience_required">
+      <option [value]="1">True</option>
+      <option [value]="0">False</option>
+    </select>
+  </div>
+  <div>
+    <label for="number_of_openings">Number of Openings: </label>
+    <input id="number_of_openings" type="number" formControlName="number_of_openings">
+  </div>
+  <div>
+    <label for="job_notes">Notes: </label>
+    <input id="job_notes" type="text" formControlName="job_notes">
+  </div>
+  <div>
+    <button type="submit" [disabled]="!jobForm.valid">Submit</button>
+    <button *ngIf="id" (click)="delete()">Delete</button>
+  </div>
+</form>
