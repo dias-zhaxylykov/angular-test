@@ -17,8 +17,6 @@ export class ThirdComponent {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      console.log(params);
-      console.log(params['id']);
     });
   }
 
