@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FirstComponent } from './pages/first/first.component';
-import { SecondComponent } from './pages/second/second.component';
-import { ThirdComponent } from './pages/third/third.component';
 
 const routes: Routes = [
-  { path: 'jobs', component: FirstComponent },
-  { path: 'jobs/new', component: SecondComponent },
-  { path: 'jobs/:id', component: ThirdComponent },
+  { path: 'jobs', loadChildren: () => import('./pages/first/first.module').then(m => m.FirstModule) },
+  { path: 'jobs/new', loadChildren: () => import('./pages/second/second.module').then(m => m.SecondModule) },
+  { path: 'jobs/:id', loadChildren: () => import('./pages/third/third.module').then(m => m.ThirdModule) },
   { path: '', redirectTo: '/jobs', pathMatch: 'full' },
   { path: '**', redirectTo: '/jobs', pathMatch: 'full' },
 ];
@@ -16,7 +13,10 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(
       routes,
-      // { enableTracing: true }
+      { 
+        // paramsInheritanceStrategy: 'always',
+        // enableTracing: true
+      }
     )
   ],
   exports: [RouterModule]
